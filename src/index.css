@@ -25,6 +25,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  font-family: 'Nunito', sans-serif;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;

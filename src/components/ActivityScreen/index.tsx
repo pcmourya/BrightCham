@@ -6,8 +6,9 @@ import PinkCard from '../../assets/pinkCard.png';
 import BlueCard from '../../assets/blueCard.png';
 import './index.css';
 import Modal from './Modal';
+import { AnimateSharedLayout, LayoutGroup, motion } from 'framer-motion';
 
-interface CardItem {
+export interface CardItem {
   id: string;
   flipedImage: string;
 }
@@ -25,11 +26,11 @@ function ActivityScreen({
   const [fruitCards, setFruitCards] = useState<CardItem[]>([]);
   const [alphabateCards, setAlphabateFruitCards] = useState<CardItem[]>([]);
   const [pinkFlippedCards, setPinkFlippedFruitCards] =
-    useState<CardItem | null>(null);
+    useState<CardItem | null>();
   const [blueFlippedCards, setBlueFlippedFruitCards] =
-    useState<CardItem | null>(null);
-  const [, setTriesLeftFruitCards] = useState<number>(6);
-  const [, setCorrectCards] = useState(0);
+    useState<CardItem | null>();
+  const [triesLeftFruitCards, setTriesLeftFruitCards] = useState<number>(12);
+  const [correctCards, setCorrectCards] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ function ActivityScreen({
   //   const handleCardClick = (card) => {};
   const onPinkCardClick = (card: CardItem) => {
     setPinkFlippedFruitCards(card);
+    setTriesLeftFruitCards((prev) => prev - 1);
     if (blueFlippedCards?.id === card.id) {
       setFruitCards(() => fruitCards.filter((c) => c.id !== card.id));
       setAlphabateFruitCards(() =>
@@ -75,13 +77,17 @@ function ActivityScreen({
   };
   return (
     <>
-      {isModalOpen && pinkFlippedCards && blueFlippedCards && (
-        <Modal
-          fruitsImg={pinkFlippedCards.flipedImage}
-          alphabateImg={blueFlippedCards.flipedImage}
-          closeModal={closeModal}
-        />
-      )}
+      {triesLeftFruitCards &&
+        isModalOpen &&
+        pinkFlippedCards &&
+        blueFlippedCards && (
+          <Modal
+            id={`${'pink'}-${pinkFlippedCards.id}`}
+            fruitsImg={pinkFlippedCards}
+            alphabateImg={blueFlippedCards}
+            closeModal={closeModal}
+          />
+        )}
       <div className="some">
         <button className="back-button" onClick={() => onBackClick()} />
         <div className="cards-container">
@@ -129,7 +135,7 @@ const CardFlip = ({
   blueCard: string;
 }) => {
   const [flip, setFlip] = useState<boolean>(false);
-
+  console.log(item.id);
   return (
     <ReactCardFlip
       flipDirection="horizontal"
@@ -143,9 +149,16 @@ const CardFlip = ({
           className="card-img"
         />
       </div>
-      <div className="card card-back" onClick={() => setFlip(false)}>
-        <img src={item.flipedImage} alt={item.id} className="card-img" />
-      </div>
+      <LayoutGroup>
+        <motion.div className="card card-back" onClick={() => setFlip(false)}>
+          <motion.img
+            layoutId={`${isPink ? 'pink' : 'blue'}-${item.id}`}
+            src={item.flipedImage}
+            alt={item.id}
+            className="card-img"
+          />
+        </motion.div>
+      </LayoutGroup>
     </ReactCardFlip>
   );
 };

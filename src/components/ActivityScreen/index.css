@@ -58,7 +58,7 @@
 .card-img {
   max-width: 100%;
   /* height: 200px !important;
-  width: 150px !important; */
+    width: 150px !important; */
 }
 
 /* Modal Overlay */
@@ -77,11 +77,22 @@
 
 /* Modal */
 .modal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  width: 400px; /* Adjust the width as per your requirement */
+  width: 40%;
+  height: 52%;
+  /* background-color: #fff; */
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 50px;
+  > img {
+    width: 250px;
+    height: 319px;
+  }
+
+  .card-img.first {
+    align-self: start;
+    /* margin-top: -30%; */
+  }
 }
 
 /* Modal Header */
@@ -104,6 +115,15 @@
   cursor: pointer;
   font-size: 16px;
   color: #333;
+}
+.match-text {
+  top: 4%;
+  position: absolute;
+  left: 50%;
+  color: #ef8f35;
+  font-weight: 800;
+  -webkit-text-stroke: 2px white;
+  font-size: 5rem;
 }
 
 /* Close Button Hover */

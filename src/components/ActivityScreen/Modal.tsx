@@ -1,8 +1,7 @@
 import React from 'react';
 import './index.css';
-import { AnimateSharedLayout, LayoutGroup, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CardItem } from '.';
-import outputImage from '../../assets/outputScreen.png';
 
 const bounce = {
   initial: { scale: 0 },
@@ -23,8 +22,8 @@ function Modal({
 }: {
   id: string;
   closeModal: () => void;
-  fruitsImg: CardItem;
-  alphabateImg: CardItem;
+  fruitsImg: CardItem | null;
+  alphabateImg: CardItem | null;
 }) {
   const handleOverlayClick = (
     event: React.MouseEvent<HTMLDivElement>,
@@ -49,28 +48,28 @@ function Modal({
           It’s a match !
         </motion.p>
         <motion.img
-          style={{rotate: -9}}
+          style={{ rotate: -9 }}
           transition={{
             duration: 0.5,
             type: 'spring',
             stiffness: 100,
             damping: 15,
           }}
-          layoutId={`pink-${fruitsImg.id}`}
-          src={fruitsImg.flipedImage}
+          layoutId={`pink-${fruitsImg?.id}`}
+          src={fruitsImg?.flipedImage}
           alt="fruits"
           className="card-img first"
         />
         <motion.img
-          style={{rotate: 9}}
+          style={{ rotate: 9 }}
           transition={{
             duration: 0.5,
             type: 'spring',
             stiffness: 100,
             damping: 15,
           }}
-          layoutId={`blue-${alphabateImg.id}`}
-          src={alphabateImg.flipedImage}
+          layoutId={`blue-${alphabateImg?.id}`}
+          src={alphabateImg?.flipedImage}
           alt="alphabate"
           className="card-img"
         />

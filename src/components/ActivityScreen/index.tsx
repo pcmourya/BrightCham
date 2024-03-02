@@ -6,8 +6,9 @@ import PinkCard from '../../assets/pinkCard.png';
 import BlueCard from '../../assets/blueCard.png';
 import './index.css';
 import Modal from './Modal';
-import { AnimateSharedLayout, LayoutGroup, motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
 import { Progress } from '../Progress';
+import FinalModal from '../FinalModal';
 
 export interface CardItem {
   id: string;
@@ -33,7 +34,7 @@ function ActivityScreen({
   const [triesLeftFruitCards, setTriesLeftFruitCards] = useState<number>(12);
   const [correctCards, setCorrectCards] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  console.log(triesLeftFruitCards);
   useEffect(() => {
     const { fruits, answers }: CardData = data;
     const fruitsShuffledCards: CardItem[] = fruits.sort(
@@ -78,21 +79,21 @@ function ActivityScreen({
   };
   return (
     <>
-      {triesLeftFruitCards &&
-        isModalOpen &&
-        pinkFlippedCards &&
-        blueFlippedCards && (
-          <Modal
-            id={`${'pink'}-${pinkFlippedCards.id}`}
-            fruitsImg={pinkFlippedCards}
-            alphabateImg={blueFlippedCards}
-            closeModal={closeModal}
-          />
-        )}
+      {!triesLeftFruitCards || correctCards === 6 ? (
+        <FinalModal count={correctCards} />
+      ) : null}
+      {triesLeftFruitCards && isModalOpen ? (
+        <Modal
+          id={`${'pink'}-${pinkFlippedCards?.id || ''}`}
+          fruitsImg={pinkFlippedCards || null}
+          alphabateImg={blueFlippedCards || null}
+          closeModal={closeModal}
+        />
+      ) : null}
       <div className="some">
         <button className="back-button" onClick={() => onBackClick()} />
-        <div className='header'>
-          <Progress  progress={30} />
+        <div className="header">
+          <Progress progress={(correctCards / 6) * 100} />
         </div>
         <div className="cards-container">
           <div className="cards">
@@ -153,10 +154,10 @@ const CardFlip = ({
           className="card-img"
         />
       </div>
-      <LayoutGroup >
+      <LayoutGroup>
         <motion.div className="card card-back" onClick={() => setFlip(false)}>
           <motion.img
-            style={{rotate: !flip ? 9 * (isPink ? -1 : 1) : 0 }}
+            style={{ rotate: !flip ? 9 * (isPink ? -1 : 1) : 0 }}
             layoutId={`${isPink ? 'pink' : 'blue'}-${item.id}`}
             src={item.flipedImage}
             alt={item.id}

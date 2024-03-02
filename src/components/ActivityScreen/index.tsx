@@ -7,6 +7,7 @@ import BlueCard from '../../assets/blueCard.png';
 import './index.css';
 import Modal from './Modal';
 import { AnimateSharedLayout, LayoutGroup, motion } from 'framer-motion';
+import { Progress } from '../Progress';
 
 export interface CardItem {
   id: string;
@@ -90,6 +91,9 @@ function ActivityScreen({
         )}
       <div className="some">
         <button className="back-button" onClick={() => onBackClick()} />
+        <div className='header'>
+          <Progress  progress={30} />
+        </div>
         <div className="cards-container">
           <div className="cards">
             {fruitCards &&
@@ -149,9 +153,10 @@ const CardFlip = ({
           className="card-img"
         />
       </div>
-      <LayoutGroup>
+      <LayoutGroup >
         <motion.div className="card card-back" onClick={() => setFlip(false)}>
           <motion.img
+            style={{rotate: !flip ? 9 * (isPink ? -1 : 1) : 0 }}
             layoutId={`${isPink ? 'pink' : 'blue'}-${item.id}`}
             src={item.flipedImage}
             alt={item.id}

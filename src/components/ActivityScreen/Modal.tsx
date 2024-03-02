@@ -49,8 +49,7 @@ function Modal({
           It’s a match !
         </motion.p>
         <motion.img
-          initial={{ rotate: '-0deg' }}
-          animate={{ rotate: '-9deg' }}
+          style={{rotate: -9}}
           transition={{
             duration: 0.5,
             type: 'spring',
@@ -63,8 +62,13 @@ function Modal({
           className="card-img first"
         />
         <motion.img
-          initial={{ rotate: '0deg' }}
-          animate={{ rotate: '9deg' }}
+          style={{rotate: 9}}
+          transition={{
+            duration: 0.5,
+            type: 'spring',
+            stiffness: 100,
+            damping: 15,
+          }}
           layoutId={`blue-${alphabateImg.id}`}
           src={alphabateImg.flipedImage}
           alt="alphabate"

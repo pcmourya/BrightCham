@@ -1,5 +1,5 @@
 import './index.css';
-import welcomeText from '../../assets/tooltip.png';
+import welcomeText from '../../assets/toolTip.png';
 import startButton from '../../assets/startButton.png';
 import nextButton from '../../assets/nextButton.png';
 import yesButton from '../../assets/yesButton.png';

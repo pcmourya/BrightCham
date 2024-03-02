@@ -1,4 +1,4 @@
-import './progress.css';
+import './Progress.css';
 
 export const Progress = ({ progress = 40 }: { progress: number }) => {
   return (

@@ -24,10 +24,12 @@ function ActivityScreen({
 }): JSX.Element {
   const [fruitCards, setFruitCards] = useState<CardItem[]>([]);
   const [alphabateCards, setAlphabateFruitCards] = useState<CardItem[]>([]);
-  const [pinkFlippedCards, setPinkFlippedFruitCards] = useState<CardItem>({});
-  const [blueFlippedCards, setBlueFlippedFruitCards] = useState<CardItem>({});
-  const [triesLeftCards, setTriesLeftFruitCards] = useState<number>(6);
-  const [correctCards, setCorrectCards] = useState(0);
+  const [pinkFlippedCards, setPinkFlippedFruitCards] =
+    useState<CardItem | null>(null);
+  const [blueFlippedCards, setBlueFlippedFruitCards] =
+    useState<CardItem | null>(null);
+  const [, setTriesLeftFruitCards] = useState<number>(6);
+  const [, setCorrectCards] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ function ActivityScreen({
   //   const handleCardClick = (card) => {};
   const onPinkCardClick = (card: CardItem) => {
     setPinkFlippedFruitCards(card);
-    if (blueFlippedCards.id === card.id) {
+    if (blueFlippedCards?.id === card.id) {
       setFruitCards(() => fruitCards.filter((c) => c.id !== card.id));
       setAlphabateFruitCards(() =>
         alphabateCards.filter((c) => c.id !== card.id),
@@ -62,7 +64,7 @@ function ActivityScreen({
   const onBlueCardClick = (card: CardItem) => {
     setBlueFlippedFruitCards(card);
     setTriesLeftFruitCards((prev) => prev - 1);
-    if (pinkFlippedCards.id === card.id) {
+    if (pinkFlippedCards?.id === card.id) {
       setFruitCards(() => fruitCards.filter((c) => c.id !== card.id));
       setAlphabateFruitCards(() =>
         alphabateCards.filter((c) => c.id !== card.id),
@@ -73,7 +75,7 @@ function ActivityScreen({
   };
   return (
     <>
-      {isModalOpen && (
+      {isModalOpen && pinkFlippedCards && blueFlippedCards && (
         <Modal
           fruitsImg={pinkFlippedCards.flipedImage}
           alphabateImg={blueFlippedCards.flipedImage}
@@ -90,7 +92,7 @@ function ActivityScreen({
                   <CardFlip
                     item={item}
                     isPink={true}
-                    pinkCard={pinkFlippedCards.id}
+                    pinkCard={pinkFlippedCards?.id || ''}
                     blueCard=""
                   />
                 </div>
@@ -104,7 +106,7 @@ function ActivityScreen({
                     item={item}
                     isPink={false}
                     pinkCard=""
-                    blueCard={blueFlippedCards.id}
+                    blueCard={blueFlippedCards?.id || ''}
                   />
                 </div>
               ))}

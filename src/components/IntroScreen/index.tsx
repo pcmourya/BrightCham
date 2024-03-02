@@ -7,10 +7,10 @@ import { useState } from 'react';
 import InstructionScreen from '../InstructionScreen';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface InstructionScreenProps {
-  titleState: string;
-  onBackClick: () => void;
-}
+// interface InstructionScreenProps {
+//   titleState: string;
+//   onBackClick: () => void;
+// }
 
 function IntroScreen() {
   const [titleState, setTitleState] = useState('welcome');

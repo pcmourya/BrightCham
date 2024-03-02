@@ -1,0 +1,54 @@
+{
+  "fruits": [
+    {
+      "id": "apple",
+      "flipedImage": "/assets/apple.png"
+    },
+    {
+      "id": "banana",
+      "flipedImage": "/assets/banana.png"
+    },
+    {
+      "id": "grapes",
+      "flipedImage": "/assets/grapes.png"
+    },
+    {
+      "id": "orange",
+      "flipedImage": "/assets/orange.png"
+    },
+    {
+      "id": "pineapple",
+      "flipedImage": "/assets/pineapple.png"
+    },
+    {
+      "id": "watermelon",
+      "flipedImage": "/assets/watermelon.png"
+    }
+  ],
+  "answers": [
+    {
+      "id": "apple",
+      "flipedImage": "/assets/A.png"
+    },
+    {
+      "id": "banana",
+      "flipedImage": "/assets/B.png"
+    },
+    {
+      "id": "grapes",
+      "flipedImage": "/assets/G.png"
+    },
+    {
+      "id": "orange",
+      "flipedImage": "/assets/O.png"
+    },
+    {
+      "id": "pineapple",
+      "flipedImage": "/assets/P.png"
+    },
+    {
+      "id": "watermelon",
+      "flipedImage": "/assets/W.png"
+    }
+  ]
+}

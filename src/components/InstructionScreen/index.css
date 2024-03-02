@@ -1,0 +1,54 @@
+.some {
+  background-image: url('../../assets/withoutMonkey.png');
+  background-size: 100% 100%;
+  /* background-attachment: fixed; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.next-button {
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: inherit;
+  width: 300px;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
+  background-color: transparent;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.next-button:hover {
+  transform: scale(1.1);
+}
+
+.select-card {
+  width: 250px;
+  height: 340;
+  padding-right: 40px;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.main-cards {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  z-index: 10;
+  /* transform: translate(-50%, -50%); */
+}
+
+.select-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.line {
+  width: 50%;
+  position: absolute;
+  top: 40%;
+  right: 25%;
+  z-index: 9;
+}

@@ -1,0 +1,74 @@
+.home {
+  background-image: url('../../assets/withMonkey.png');
+  background-size: 100% 100%;
+  /* background-attachment: fixed; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.welcome-tooltip {
+  position: absolute;
+  top: 5%;
+  inset: 8% 0px 0px 53%;
+  color: #11aec6;
+  /* max-width: 446px; */
+  font: 800 50px Nunito, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 230px;
+  background-size: inherit;
+  > p {
+    position: relative;
+    right: 0%;
+    top: -11%;
+    font-size: 40px;
+  }
+}
+
+.next-button {
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: inherit;
+  width: 300px;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
+  background-color: transparent;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.next-button:hover {
+  transform: scale(1.1);
+}
+
+.startText {
+  font-family: Nunito;
+  font-size: 45px;
+  font-weight: 800;
+  line-height: 61px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.back-button {
+  background-image: url('../../assets/backButton.png');
+  height: 120px;
+  background-repeat: no-repeat;
+  background-size: inherit;
+  width: 120px;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  background-color: transparent;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.2);
+}
